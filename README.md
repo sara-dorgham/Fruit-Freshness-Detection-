@@ -1,6 +1,7 @@
 # Fruit-Freshness-Detection-
 A multi-task deep learning model that predicts fruit freshness from images by performing two tasks: 1) Classification: Fresh vs Rotten 2) Regression: Days remaining until spoilage Using a fine-tuned ResNet50, the system processes the dataset, trains both tasks, and outputs evaluation metrics and a final trained model.
 
+ 
  1) Dataset Preparation(Sara Dorgham)
 - Images are loaded from `train / test / valid` folders.  
 - Renamed and saved inside a unified folder: `augmented_dataset/`  
@@ -11,7 +12,8 @@ A multi-task deep learning model that predicts fruit freshness from images by pe
   - class (Fresh/Rotten)  
 - Extra augmentation is applied for Fresh class in training.
 
-  2) Data Loading(Malak Khaled)
+
+2) Data Loading(Malak Khaled)
 A custom PyTorch Dataset is implemented with:
 - Resize  
 - Augmentation (Rotation, ColorJitter, Affine…)  
@@ -21,7 +23,8 @@ DataLoaders are created for:
 - validation  
 - test
 
-  2) Data Analysis (EDA)(Eman Kilany)
+
+3) Data Analysis (EDA)(Eman Kilany)
 The notebook generates:
 - Distribution of classes  
 - Distribution of days_to_rot  
@@ -29,7 +32,8 @@ The notebook generates:
 - Sample image visualizations  
 Outputs are saved automatically (PNG files).
 
- 4) Model Architecture(George)
+
+4) Model Architecture(George)
  **Base:** ResNet50 (pretrained)
 
  Added Heads:
@@ -39,7 +43,8 @@ Outputs are saved automatically (PNG files).
 **Classification Head:**  
 - Dense(256→128→2) + ReLU + Dropout
 
- 5) Training Strategy(Nada Nabil)
+
+5) Training Strategy(Nada Nabil)
 - Loss = (0.7 × MSELoss) + (0.3 × CrossEntropyLoss)  
 - Optimizer: Adam  
 - Scheduler: ReduceLROnPlateau  
@@ -48,7 +53,8 @@ Outputs are saved automatically (PNG files).
 - Saving best model weights  
 - Tracking full training history (loss + accuracy)
 
-   6) Evaluation(Menna Elasaly)
+
+6) Evaluation(Menna Elasaly)
 Model evaluation includes:
 - MAE, MSE, RMSE, R²  
 - Classification accuracy  
@@ -60,7 +66,8 @@ Model evaluation includes:
 Graphical User Interface was developed to visualize the true freshness labels of any image in the dataset.
 The GUI provides a clean, interactive interface with two main panels: image display and freshness results panel.
 
-   8) How to Run
+
+8) How to Run
 1. Clone the repository  
 2. Place dataset folders inside main directory  
 3. Open and run the notebook  
