@@ -2,26 +2,21 @@
 A multi-task deep learning model that predicts fruit freshness from images by performing two tasks: 1) Classification: Fresh vs Rotten 2) Regression: Days remaining until spoilage Using a fine-tuned ResNet50, the system processes the dataset, trains both tasks, and outputs evaluation metrics and a final trained model.
 
  
- 1) Dataset Preparation(Sara Dorgham)
-- Images are loaded from `train / test / valid` folders.  
-- Renamed and saved inside a unified folder: `augmented_dataset/`  
-- A `labels.csv` file is generated containing:
-  - image path  
-  - days_to_rot  
-  - original split  
-  - class (Fresh/Rotten)  
-- Extra augmentation is applied for Fresh class in training.
+1) Project setup and configuration(Sara Dorgham)
+- Load images from `train`, `test`, and `valid` folders.
+- Resize all images.
+- Save images to a unified folder: `augmented_dataset/`.
+- Generate `labels.csv` with:
+  - `filename` → relative path of the image
+  - `days_to_rot` → estimated freshness
+  - `split_name` → train/test/validation
 
 
-2) Data Loading(Malak Khaled)
-A custom PyTorch Dataset is implemented with:
-- Resize  
-- Augmentation (Rotation, ColorJitter, Affine…)  
-- Normalization  
-DataLoaders are created for:
-- train  
-- validation  
-- test
+
+2) Dataset Preparation & Augmentation(Malak Khaled)
+- Implementing the main loop structure and loading images
+- Processing and saving fresh images, including augmentations
+- Processing and saving rotten images
 
 
 3) Data Analysis (EDA)(Eman Kilany)
